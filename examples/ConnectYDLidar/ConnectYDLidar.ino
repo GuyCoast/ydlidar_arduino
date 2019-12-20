@@ -136,11 +136,13 @@ void restartScan(){
              // detected...
               Serial.print("[YDLIDAR INFO] YDLIDAR running correctly! The health status:");
               Serial.println( healthinfo.status==0?"well":"bad");
+	      digitalWrite(YDLIDAR_MOTRO_EN, HIGH);
+	      delay(500);
               if(lidar.startScan() == RESULT_OK){
                 isScanning = true;
                 //start motor in 1.8v
 		        setMotorSpeed(1.8);
-		digitalWrite(YDLIDAR_MOTRO_EN, HIGH);
+		//digitalWrite(YDLIDAR_MOTRO_EN, HIGH);
                 Serial.println("Now YDLIDAR is scanning ......");
               //delay(1000);
               }else{
